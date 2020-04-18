@@ -1,0 +1,17 @@
+.theme-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    width: 400px;
+    height: 100px;
+    box-shadow: inset 0 0 5px 0 rgba(0,0,0,.3);
+    border: 1px solid rgb(255, 255, 255, .5);
+    user-select: none;
+}
+.theme-cell__value {
+    display: flex;
+    color: var(--color-font);
+    font-size: 24px;
+    font-weight: bold;
+}

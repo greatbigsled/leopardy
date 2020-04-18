@@ -1,0 +1,7 @@
+.questions-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.question-row__prices {
+    display: flex;
+}
