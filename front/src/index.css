@@ -1,27 +1,24 @@
-:root {
-  --color-background: #00476F;
-  --color-font: #FFFB92;
-  --color-border: #fff;
+@font-face {
+  font-family: 'Exo2';
+  src: url('./fonts/Exo2-VariableFont_wght.ttf') format('woff2-variations');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
 }
 
-html {
-  background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(0,71,111,1) 100%);
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Exo2';
+  /* font-family: 'Exo2', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, #4b6cb7, #182848);
 }
 
 code {
@@ -29,7 +26,3 @@ code {
     monospace;
 }
 
-#root {
-  width: 100%;
-  height: 100%;
-}

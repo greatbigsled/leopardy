@@ -2,9 +2,15 @@
   "name": "server",
   "private": true,
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "./node_modules/.bin/nodemon ./src/index.js"
   },
   "dependencies": {
-    "@logux/server": "^0.8.5"
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0",
+    "mongoose": "^5.9.11",
+    "nodemon": "^2.0.3",
+    "socket.io": "^2.3.0"
   }
 }
