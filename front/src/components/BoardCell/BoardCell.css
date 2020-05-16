@@ -1,0 +1,35 @@
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #f2c94c;
+}
+
+.cell:not(:last-child) {
+  border-right: 1px solid #f2c94c;
+}
+
+.cell__is-answered {
+
+}
+
+.cell--select-animation-active {
+  animation-duration: 700ms;
+  animation-name: flash-cell;
+  animation-iteration-count: infinite;
+  color: black;
+}
+
+@keyframes flash-cell {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #f2c94c;
+  }
+  100% {
+    background-color: transparent;
+  }
+}

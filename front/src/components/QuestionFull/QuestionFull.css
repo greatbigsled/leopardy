@@ -1,0 +1,21 @@
+.question-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  height: 480px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  border: 1px solid #F2C94C;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #F2C94C;
+  user-select: none;
+  background: lightcyan;
+  display: none;
+}

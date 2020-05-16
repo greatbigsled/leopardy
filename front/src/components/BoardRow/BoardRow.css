@@ -1,0 +1,7 @@
+.board-row {
+  display: grid;
+  grid-template: 80px / 300px repeat(5, 80px);
+}
+.board-row:not(:last-child) .cell {
+  border-bottom: 1px solid #f2c94c;
+}

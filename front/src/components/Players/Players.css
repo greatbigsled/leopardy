@@ -1,0 +1,54 @@
+.players-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
+.player {
+    padding: 0 50px;
+}
+.player-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.player-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+.player-avatar--one {
+  background-color: #fd4a48;
+}
+.player-avatar--two {
+  background-color: #2ab7ca;
+}
+.player-avatar--three {
+  background-color: #ffd766;
+}
+.player-name {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  padding: 8px 15px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #fff;
+  min-width: 120px;
+  letter-spacing: .5px;
+}
+
+.player-footer {
+  font-size: 34px;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 1px;
+}
