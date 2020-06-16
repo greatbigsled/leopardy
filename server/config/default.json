@@ -1,0 +1,15 @@
+{
+  "dbConfig": {
+    "url": "mongodb+srv://api-dev:shforever@mongotest-uquja.azure.mongodb.net/test?retryWrites=true&w=majority"
+  },
+  "credit": {
+    "initialLimit": 100,
+    "initialDays": 1
+  },
+  "crypto": {
+    "hash": {
+      "length": 128,
+      "iterations": 10
+    }
+  }
+}

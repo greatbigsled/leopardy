@@ -3,6 +3,18 @@
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+}
+
+.app__game, .app__login {
+  height: 100%;
+  width: 100%;
+}
+.app__game[hidden],
+.app__login[hidden] {
+  display: none;
+}
+
+.app__game {
   display: grid;
   padding: 20px;
   grid-template-rows: 540px 150px auto;

@@ -1,9 +1,2 @@
-/
-  -> login or register (username && pass)
-
-
-
-
-game
-3 players + main
-
+`yarn start` — start server
+`yarn db-init` — run db initialization script

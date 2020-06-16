@@ -1,26 +1,32 @@
-const Koa = require('koa');
-const IO = require('koa-socket-2');
-
-const serve = require('koa-static');
-
-const bodyParser = require('koa-bodyparser');
-const router = require('./routes');
-
+const Koa = require('koa')
+const serve = require('koa-static')
+const bodyParser = require('koa-bodyparser')
+const auth = require('./middleware/auth')
+const router = require('./routes')
 
 const app = new Koa()
-const io = new IO()
 
-app.use( bodyParser() );
-app.use( router.middleware() );
-app.use( serve('../../front/build') );
+app.use( bodyParser({
+  jsonLimit: '56kb'
+}) )
+app.use(async (ctx, next) => {
+  const sid = ctx.cookies.get('sid')
+  console.log(`sid cookie = ${sid}`)
 
-io.attach(app);
+  if (!sid) {
+    const generatedSid = Math.random()
+    ctx.cookies.set('sid', generatedSid, {
+      // httpOnly:
+    })
+  }
+})
 
-io.on('message', (ctx, data) => {
-  console.log('client sent data to message endpoint', data);
-});
+
+app.use( router.middleware() )
+app.use( serve('../../front/build') )
 
 
+const PORT = 3033
 
-
-app.listen(3000);
+console.log(`Server is listenning on port: ${PORT}`)
+app.listen(PORT)

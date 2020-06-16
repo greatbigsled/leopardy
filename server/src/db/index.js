@@ -1,11 +1,16 @@
-const mongoose = require('mongoose');
-const { mongoConnectString } = require('../config');
+const mongoose = require("mongoose")
+const config = require("config")
+const mongoConnectUrl = config.dbConfig.url
 
-mongoose.connect( mongoConnectString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-} );
+mongoose.set('debug', true)
+
+mongoose.connect(mongoConnectUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  poolSize: 5,
+  keepAlive: true
+})
 
 module.exports = {
-    mongoose
+  mongoose,
 }
