@@ -1,24 +1,24 @@
 // Здесь нужно на каждом запросе проверять http-only куку пользователя
 // и реагировать соответствующе
-const uuid = require('uuid')
+const User = require('../db/models/User')
 
 
 async function auth(ctx, next) {
   // проверяем наличие куки
-  const sid = ctx.cookies.get('sid')
-  console.log(`sid cookie = ${sid}`)
+  const { sid } = ctx.session
 
   if (!sid) {
-    const generatedSid = uuid4()
-    ctx.cookies.set('sid', generatedSid)
+    throw new Error('Session id not found, something gone wrong')
   }
 
-  // если нет — user = null
+  const user = await User.findOne({ sid })
+  if (user) {
+    ctx.session.userId = user._id
+  } else {
+    ctx.session.userId = null
+  }
 
-  // если есть — нужно проверить и получить данные о юзере
-  // переда
-
-  await next();
+  await next()
 }
 
-module.exports = auth;
+module.exports = auth

@@ -9,6 +9,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    sid: {
+      type: String,
+      required: true,
+    },
     passwordHash: {
       type: String,
       required: true,

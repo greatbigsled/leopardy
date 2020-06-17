@@ -11,6 +11,15 @@ mongoose.connect(mongoConnectUrl, {
   keepAlive: true
 })
 
+const db = mongoose.connection
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log('Succesfuly connected to Mongo.db')
+});
+
+
 module.exports = {
   mongoose,
 }

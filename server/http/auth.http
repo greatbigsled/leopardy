@@ -1,7 +1,8 @@
-POST http://localhost:3033/auth/
+POST http://localhost:3033/auth
 Content-Type: application/json
 
 {
+    "action": "register",
     "name": "john",
     "password": "foobar"
 }
