@@ -43,7 +43,7 @@ userSchema.virtual("password").set(function (password) {
       this.salt,
       config.crypto.hash.iterations,
       config.crypto.hash.length,
-      'sha1'
+      'sha256'
     ).toString('base64')
   } else {
     this.salt = undefined
@@ -53,11 +53,13 @@ userSchema.virtual("password").set(function (password) {
   return this._plainPassword
 })
 
-userSchema.method.checkPassword = function(password) {
+userSchema.methods.checkPassword = function(password) {
   if (!password) {
+    console.log('No password')
     return false
   }
   if (!this.passwordHash) {
+    console.log('No passwordHash')
     return false
   }
 
