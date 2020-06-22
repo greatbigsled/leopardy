@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from 'react'
 import { StoreContext } from '../../state/context'
 import { setUser } from '../../state/actions'
 
-import "./Login.css";
+import './Login.css'
 
 export default function Login() {
-  const [userData, setUserData] = useState({ username: '', id: 'KSJALSD'})
+  const [userData, setUserData] = useState(null)
 
   const { state, dispatch } = useContext(StoreContext)
 
@@ -20,7 +20,13 @@ export default function Login() {
       <div className="login-form">
         <div className="login-item">
           <span className="login-item__title">Username</span>
-          <input className="login-item__input" type="text" onChange={(e) => setUserData({ ...userData, username: e.target.value })} />
+          <input
+            className="login-item__input"
+            type="text"
+            onChange={(e) =>
+              setUserData({ ...userData, username: e.target.value })
+            }
+          />
         </div>
 
         <div className="login-item">
@@ -33,5 +39,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-  );
+  )
 }

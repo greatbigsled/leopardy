@@ -6,3 +6,10 @@ Content-Type: application/json
     "name": "Baran",
     "password": "shforever"
 }
+
+###
+
+POST http://localhost:3033/auth
+Content-Type: application/json
+
+{ "action": "login"}
