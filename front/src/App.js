@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 import axios from 'axios'
 
-import { reducer, initialState } from './state/store'
+// import { reducer, initialState } from './state/store'
 import { StoreContext } from './state/context'
 
 import './App.css'
@@ -10,9 +10,11 @@ import Login from './components/Login/Login'
 import Players from './components/Players/Players'
 import GameInfo from './components/GameInfo/GameInfo'
 import QuestionFull from './components/QuestionFull/QuestionFull'
+import { useAppState } from './state/context'
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const { state } = useAppState()
+  // const [state, dispatch] = useReducer(reducer, initialState)
   const isUserExists = Boolean(state.user)
 
   useEffect(() => {

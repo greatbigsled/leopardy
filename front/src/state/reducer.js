@@ -4,32 +4,16 @@ import {
   SET_USER
 } from './actionTypes'
 
-import gameTexts from "../other/gameTexts";
-import question from '../other/questions'
-
-export const initialState = {
-  user: null,
-  info: {
-    title: "Вступление",
-    description: gameTexts.intro_players,
-  },
-  board: {
-    activeQuestion: null,
-    questions: question,
-    selectedCell: null
-  },
-}
-
 // редьюсер точно такой же, как в прошлый раз
-export const reducer = (state, action) => {
+export const AppStateReducer = (state, action) => {
   switch(action.type) {
-    case SET_ACTIVE_QUESTION:
+    case SET_ACTIVE_QUESTION: {
       return { ...state, activeQuestion: action.payload }
-
-    case SET_USER:
+    }
+    case SET_USER: {
       return { ...state, user: action.payload }
-
-    case SET_SELECTED_CELL:
+    }
+    case SET_SELECTED_CELL: {
       return {
         ...state,
         board: {
@@ -37,11 +21,14 @@ export const reducer = (state, action) => {
           selectedCell: action.payload
         }
       }
+    }
 
-    case 'RESET':
+    case 'RESET': {
       return {...initialState}
+    }
 
-    default:
+    default: {
       return state
+    }
   }
 }
