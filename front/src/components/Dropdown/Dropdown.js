@@ -1,4 +1,6 @@
 import React from 'react'
+import './Dropdown.css'
+
 import { useState } from 'react'
 
 export default function Dropdown({ title, itemsArr, onItemClick }) {
@@ -15,7 +17,7 @@ export default function Dropdown({ title, itemsArr, onItemClick }) {
     <div className="dropdown">
       <div className="dropdown__title">
         <button
-          className="dropdown__title-btn"
+          className="dropdown__btn dropdown__btn--title"
           onClick={() => (isOpen ? setOpen(false) : setOpen(true))}
         >
           {title}
@@ -27,7 +29,7 @@ export default function Dropdown({ title, itemsArr, onItemClick }) {
           return (
             <div className="dropdown__item" key={idx}>
               <button
-                className="dropdown__item-btn"
+                className="dropdown__btn dropdown__btn--item"
                 onClick={() => handleItemClick(it)}
               >
                 {it.title}

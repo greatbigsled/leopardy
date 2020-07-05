@@ -1,26 +1,46 @@
 import React, { useState } from 'react'
 import { useAppState } from '../../state/context'
 import './Login.css'
+import { setUser, setLoading } from '../../state/actions'
 
 import logIn from '../../api/logIn'
 
 export default function Login() {
-  const { dispatch } = useAppState()
+  const { state, dispatch } = useAppState()
 
   const [username, setName] = useState('')
   const [password, setPassword] = useState('')
 
   const onLoginSubmit = async () => {
-    const res = await logIn(username, password)
+    dispatch(setLoading(true))
+    console.log(state)
 
+    const res = await logIn(username, password)
     console.log(res && res.data)
+
+    dispatch(setLoading(false))
+
+    const error = res.data.error
+    if (error) {
+      alert('ERROR: ' + error.message)
+      return
+    }
+
+    const user = res.data.data
+
+    dispatch(setUser(user))
   }
 
   return (
     <div className="login">
-      <h1 className="login-title">Leopardy</h1>
-
       <div className="login-form">
+        <h1 className="login-title">Leopardy</h1>
+        <div>
+          Welcome to Leopardy game.
+          Log in or create account to continue
+        </div>
+        <br/>
+
         <div className="login-item">
           <span className="login-item__title">Username</span>
           <input

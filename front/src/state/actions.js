@@ -16,10 +16,20 @@ export const selectCell = ({ selectedCellIdx, selectedRowIdx }) => ({
   type: SET_SELECTED_CELL
 })
 
-export const setUser = ({ id, name }) => ({
-  payload: { id, name },
-  type: SET_USER
-})
+export const setUser = (user) => {
+  if (!user) {
+    return {
+      payload: null,
+      type: SET_USER
+    }
+  }
+
+  const { id, name } = user
+  return {
+    payload: { id, name },
+    type: SET_USER
+  }
+}
 
 export const setLoading = (isLoading) => ({
   payload: isLoading,

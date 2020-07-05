@@ -7,5 +7,5 @@ export default async function getUser() {
     const error = res.data.error
     const user = res.data.data
 
-    return user
+    return { user, error }
 }

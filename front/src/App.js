@@ -20,9 +20,14 @@ function App() {
   useEffect(() => {
     if (!state.user) {
       getUser()
-        .then((user) => {
-          dispatch(setUser(user))
-          dispatch(setLoading(false))
+        .then(({ user, error }) => {
+
+          if (user) {
+            dispatch(setUser(user))
+            dispatch(setLoading(false))
+          } else {
+            console.log(error)
+          }
         }, (error) => {
           console.log(error)
         })
@@ -32,9 +37,10 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__header">
+      <div hidden={!isUserExists} className="app__header">
         <Header />
       </div>
+
       {/* Game */}
       <div hidden={!isUserExists} className="app__game">
         <div className="board-block">

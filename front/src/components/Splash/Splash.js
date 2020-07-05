@@ -19,7 +19,6 @@ export default function Splash(hasLoader, isHidden) {
             width="100px"
             height="100px"
             viewBox="0 0 40 40"
-            // enable-background="new 0 0 40 40"
           >
             <path
               opacity="0.2"
