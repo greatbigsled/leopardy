@@ -1,4 +1,5 @@
 export const SET_ACTIVE_QUESTION = 'SET_ACTIVE_QUESTION'
 export const SET_SELECTED_CELL = 'SET_SELECTED_CELL'
 export const SET_USER = 'SET_USER'
+export const SET_IS_LOADING = 'SET_IS_LOADING'
 

@@ -41,10 +41,15 @@ async function session(ctx, next) {
       visits: dbSession.visits,
     }
 
-    ctx.cookies.set('sid', dbSession.sid)
+    ctx.cookies.set('sid', dbSession.sid, {
+      httpOnly: false
+    })
   }
 
   console.log(ctx.session)
+  console.log('------------------')
+  console.log({ sid })
+  console.log('------------------')
 
   await next()
 }

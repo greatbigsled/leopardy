@@ -1,10 +1,10 @@
 import {
   SET_ACTIVE_QUESTION,
   SET_SELECTED_CELL,
-  SET_USER
+  SET_USER,
+  SET_IS_LOADING
 } from './actionTypes'
 
-// редьюсер точно такой же, как в прошлый раз
 export const AppStateReducer = (state, action) => {
   switch(action.type) {
     case SET_ACTIVE_QUESTION: {
@@ -22,9 +22,8 @@ export const AppStateReducer = (state, action) => {
         }
       }
     }
-
-    case 'RESET': {
-      return {...initialState}
+    case SET_IS_LOADING: {
+      return { ...state, isLoading: action.payload }
     }
 
     default: {

@@ -9,9 +9,11 @@ async function handleRegistration(ctx, payload) {
   const existingUser = await User.findOne({ name })
 
   if (existingUser) {
-    ctx.status = 400
+    ctx.status = 200
     ctx.body = {
-      message: 'User with given name already exists',
+      error: {
+        message: 'User with given name already exists',
+      },
     }
 
     return
@@ -38,7 +40,7 @@ async function handleRegistration(ctx, payload) {
     data: {
       name: existingUser.name,
       id: existingUser._id,
-    }
+    },
   }
 
   return
@@ -49,9 +51,9 @@ async function handleLogin(ctx, payload) {
 
   const existingUser = await User.findOne({ name })
   if (!existingUser) {
-    ctx.status = 400
+    ctx.status = 200
     ctx.body = {
-      message: 'User with given name is not found',
+      error: { message: 'User with given name is not found' },
     }
 
     return
@@ -69,11 +71,13 @@ async function handleLogin(ctx, payload) {
       },
     }
 
-    ctx.cookies.set('sid', existingUser.sid)
+    ctx.cookies.set('sid', existingUser.sid, { httpOnly: false })
   } else {
-    ctx.status = 400
+    ctx.status = 200
     ctx.body = {
-      message: 'Password is wrong',
+      error: {
+        message: 'Password is wrong',
+      },
     }
   }
 
@@ -90,13 +94,15 @@ async function handleGetUser(ctx, payload) {
       message: 'Success',
       data: {
         name: user.name,
-        id: user._id
-      }
+        id: user._id,
+      },
     }
   } else {
-    ctx.status = 403
+    ctx.status = 200
     ctx.body = {
-      message: 'User is not authorized',
+      error: {
+        message: 'User is not authorized',
+      },
     }
   }
 }

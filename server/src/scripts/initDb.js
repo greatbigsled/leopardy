@@ -10,7 +10,7 @@ const initialUsers = [
   },
   {
     name: 'sanek',
-    password: 'shvorever',
+    password: 'shforever',
     sid: 'sanek-sid',
   },
   {

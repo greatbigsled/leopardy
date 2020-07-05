@@ -1,0 +1,12 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown__title-btn {
+  font-size: 20px;
+  text-transform: capitalize;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  color: white;
+}

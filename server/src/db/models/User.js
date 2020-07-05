@@ -37,7 +37,9 @@ userSchema.virtual("password").set(function (password) {
   this._plainPassword = password
 
   if (password) {
-    this.salt = crypto.randomBytes(config.crypto.hash.length).toString('base64')
+    this.salt = crypto.randomBytes(10).toString('base64')
+    this.salt = 'salt'
+
     this.passwordHash = crypto.pbkdf2Sync(
       password,
       this.salt,
@@ -45,6 +47,13 @@ userSchema.virtual("password").set(function (password) {
       config.crypto.hash.length,
       'sha256'
     ).toString('base64')
+
+    console.log({
+      user: this.name,
+      password: password,
+      hash: this.passwordHash,
+      salt: this.salt
+    })
   } else {
     this.salt = undefined
     this.passwordHash = undefined
@@ -54,6 +63,7 @@ userSchema.virtual("password").set(function (password) {
 })
 
 userSchema.methods.checkPassword = function(password) {
+  console.log(`Check password: ${password}`)
   if (!password) {
     console.log('No password')
     return false
@@ -63,6 +73,7 @@ userSchema.methods.checkPassword = function(password) {
     return false
   }
 
+  console.log(`salt is     ${this.salt}`)
   const incomingPasswordHash = crypto.pbkdf2Sync(
       password,
       this.salt,
@@ -70,6 +81,9 @@ userSchema.methods.checkPassword = function(password) {
       config.crypto.hash.length,
       'sha256'
     ).toString('base64')
+
+  console.log(`Incoming hash: ${incomingPasswordHash}`)
+  console.log(`DB hash: ${this.passwordHash}`)
 
   return incomingPasswordHash === this.passwordHash
 }

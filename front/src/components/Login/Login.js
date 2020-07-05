@@ -1,16 +1,19 @@
-import React, { useContext, useState } from 'react'
-import { StoreContext } from '../../state/context'
-import { setUser } from '../../state/actions'
-
+import React, { useState } from 'react'
+import { useAppState } from '../../state/context'
 import './Login.css'
 
+import logIn from '../../api/logIn'
+
 export default function Login() {
-  const [userData, setUserData] = useState(null)
+  const { dispatch } = useAppState()
 
-  const { state, dispatch } = useContext(StoreContext)
+  const [username, setName] = useState('')
+  const [password, setPassword] = useState('')
 
-  const onLoginClick = () => {
-    dispatch(setUser({ ...userData }))
+  const onLoginSubmit = async () => {
+    const res = await logIn(username, password)
+
+    console.log(res && res.data)
   }
 
   return (
@@ -23,19 +26,25 @@ export default function Login() {
           <input
             className="login-item__input"
             type="text"
-            onChange={(e) =>
-              setUserData({ ...userData, username: e.target.value })
-            }
+            value={username}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
         <div className="login-item">
           <span className="login-item__title">Password</span>
-          <input className="login-item__input" type="password" />
+          <input
+            className="login-item__input"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
 
-        <div className="login-item" onClick={onLoginClick}>
-          <button className="login-item__btn">Login</button>
+        <div className="login-item">
+          <button className="login-item__btn" onClick={onLoginSubmit}>
+            Login
+          </button>
         </div>
       </div>
     </div>

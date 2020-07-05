@@ -1,0 +1,53 @@
+.splash {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.splash__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  min-width: 500px;
+  min-height: 500px;
+  background: linear-gradient(to right, #4b6cb7, #182848);
+  box-shadow: 0 0 23px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.splash__logo {
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  transform: rotate(-2deg);
+  color: transparent;
+  background-image: url('/leo.png');
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 30% auto;
+  background-clip: text;
+  user-select: none;
+}
+
+.splash__loader {
+  margin: 0 0 2em;
+  height: 100px;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.splash__loader svg path,
+.splash__loader svg rect {
+  fill: white;
+}

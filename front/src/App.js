@@ -1,55 +1,63 @@
-import React, { useReducer, useEffect } from 'react'
-import axios from 'axios'
-
-// import { reducer, initialState } from './state/store'
-import { StoreContext } from './state/context'
+import React, { useEffect } from 'react'
 
 import './App.css'
+import Splash from './components/Splash/Splash'
+import Header from './components/Header/Header'
 import Board from './components/Board/Board'
 import Login from './components/Login/Login'
 import Players from './components/Players/Players'
 import GameInfo from './components/GameInfo/GameInfo'
 import QuestionFull from './components/QuestionFull/QuestionFull'
 import { useAppState } from './state/context'
+import { setUser, setLoading } from './state/actions'
+import getUser from './api/getUser'
 
 function App() {
-  const { state } = useAppState()
-  // const [state, dispatch] = useReducer(reducer, initialState)
+  const { state, dispatch } = useAppState()
   const isUserExists = Boolean(state.user)
+  const isLoading = state.isLoading
 
   useEffect(() => {
-    async function getUser() {
-      const user = await axios.post('http://localhost:3033/auth', { action: 'get_user'})
-      console.log(user)
+    if (!state.user) {
+      getUser()
+        .then((user) => {
+          dispatch(setUser(user))
+          dispatch(setLoading(false))
+        }, (error) => {
+          console.log(error)
+        })
     }
-    getUser()
-  })
+
+  }, [])
 
   return (
-    <StoreContext.Provider value={{ dispatch, state }}>
-      <div className="app">
-        {/* Game */}
-        <div hidden={!isUserExists} className="app__game">
-          <div className="board-block">
-            <Board isVisible={true} />
-            <QuestionFull activeQuestion={null} />
-          </div>
-
-          <div className="game-info-block">
-            <GameInfo />
-          </div>
-
-          <div className="players-block">
-            <Players />
-          </div>
+    <div className="app">
+      <div className="app__header">
+        <Header />
+      </div>
+      {/* Game */}
+      <div hidden={!isUserExists} className="app__game">
+        <div className="board-block">
+          <Board isVisible={true} />
+          <QuestionFull activeQuestion={null} />
         </div>
 
-        {/* Login */}
-        <div hidden={isUserExists} className="app__login">
-          <Login />
+        <div className="game-info-block">
+          <GameInfo />
+        </div>
+
+        <div className="players-block">
+          <Players />
         </div>
       </div>
-    </StoreContext.Provider>
+
+      {/* Login */}
+      <div hidden={isUserExists} className="app__login">
+        <Login />
+      </div>
+
+      <Splash isHidden={!isLoading} />
+    </div>
   )
 }
 

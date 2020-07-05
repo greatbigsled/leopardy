@@ -1,10 +1,10 @@
-import React, { useContext } from "react"
-import { StoreContext } from '../../state/context'
+import React from "react"
 
 import "./GameInfo.css";
+import { useAppState } from "../../state/context";
 
 export default function GameInfo() {
-  const { state } = useContext(StoreContext)
+  const { state } = useAppState()
   const { info: { title, description } } = state
 
   return (

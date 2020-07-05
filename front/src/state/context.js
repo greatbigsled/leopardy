@@ -1,23 +1,9 @@
-import { createContext, useContext, useReducer } from 'react'
-import { AppStateReducer } from './reducer'
+import React, { createContext, useContext, useReducer } from 'react'
 
-import gameTexts from '../other/gameTexts'
-import question from '../other/questions'
+import { AppStateReducer } from './reducer'
+import { appData } from './initialAppData'
 
 const AppStateContext = createContext({})
-
-const appData = {
-  user: null,
-  info: {
-    title: 'Вступление',
-    description: gameTexts.intro_players,
-  },
-  board: {
-    activeQuestion: null,
-    questions: question,
-    selectedCell: null,
-  },
-}
 
 export const AppStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppStateReducer, appData)

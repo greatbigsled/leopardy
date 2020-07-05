@@ -14,6 +14,11 @@
     "socket.io-client": "^2.3.0",
     "styled-components": "^5.1.1"
   },
+  "devDependencies": {
+    "eslint-plugin-import": "^2.22.0",
+    "prettier": "2.0.5"
+  },
+  "proxy": "http://localhost:3033",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,8 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "prettier": "2.0.5"
   }
 }

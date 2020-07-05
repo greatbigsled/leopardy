@@ -1,7 +1,8 @@
 import {
   SET_ACTIVE_QUESTION,
   SET_SELECTED_CELL,
-  SET_USER
+  SET_USER,
+  SET_IS_LOADING
 } from './actionTypes'
 
 
@@ -18,4 +19,9 @@ export const selectCell = ({ selectedCellIdx, selectedRowIdx }) => ({
 export const setUser = ({ id, name }) => ({
   payload: { id, name },
   type: SET_USER
+})
+
+export const setLoading = (isLoading) => ({
+  payload: isLoading,
+  type: SET_IS_LOADING
 })
