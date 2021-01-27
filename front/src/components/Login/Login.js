@@ -62,6 +62,13 @@ export default function Login() {
         </div>
 
         <div className="login-item">
+          <br />
+          <br />
+          <br />
+          <span className="login-item__title">Need help?</span>
+        </div>
+
+        <div className="login-item">
           <button className="login-item__btn" onClick={onLoginSubmit}>
             Login
           </button>
